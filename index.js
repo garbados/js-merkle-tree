@@ -14,7 +14,7 @@ module.exports =
  * const MerkleTree = require('@garbados/merkle-tree')
  * const tree = new MerkleTree('sha256', [1, 2, 3, 4, 5, 6])
  * console.log(tree.root)
- * > b0f83986db9ecaa36bd08d732a99fc461f113b78e75612bade03892cd7bb8d25
+ * > 34d6926e5b6cde37a92cb1ed95a79fe04eb0c66600beb360d41d822631d83915
  */
 class MerkleTree {
   constructor (digestFn, data) {
@@ -25,7 +25,9 @@ class MerkleTree {
     } else {
       this.digestFn = digestFn
     }
-    this._levels = [data].concat(this._derive(data))
+    const leaves = data.map(this.digestFn)
+    console.log(leaves)
+    this._levels = [leaves].concat(this._derive(leaves))
   }
 
   /**
@@ -100,7 +102,7 @@ class MerkleTree {
    * @example
    *
    * console.log(tree.root)
-   * > b0f83986db9ecaa36bd08d732a99fc461f113b78e75612bade03892cd7bb8d25
+   * > 34d6926e5b6cde37a92cb1ed95a79fe04eb0c66600beb360d41d822631d83915
    */
   get root () {
     return this.levels[this.levels.length - 1][0]
@@ -130,7 +132,7 @@ class MerkleTree {
    * >     '2f9cf80b937f44b41379ae3765c65668e5e96241d19d2088e76d72d18ea324b2' ],
    * >   [ '2450f5c346c26103f2bf4ba7052954556e58a1d577b78e17faa7d54c29cf6741',
    * >     '340c611ef9c540adf73ee22e41b148f9549c5bd88dfdf1a0792a23d564380dde' ],
-   * >   [ 'b0f83986db9ecaa36bd08d732a99fc461f113b78e75612bade03892cd7bb8d25' ] ]
+   * >   [ '34d6926e5b6cde37a92cb1ed95a79fe04eb0c66600beb360d41d822631d83915' ] ]
    */
   get levels () {
     return this._levels

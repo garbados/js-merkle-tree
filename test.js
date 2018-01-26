@@ -5,7 +5,7 @@ const assert = require('assert')
 const MerkleTree = require('.')
 
 const DATA = [1, 2, 3, 4, 5, 6]
-const ROOT = 'b0f83986db9ecaa36bd08d732a99fc461f113b78e75612bade03892cd7bb8d25'
+const ROOT = '34d6926e5b6cde37a92cb1ed95a79fe04eb0c66600beb360d41d822631d83915'
 
 describe('js-merkle-tree', function () {
   it('should hash anything', function () {
