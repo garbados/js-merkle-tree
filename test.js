@@ -8,6 +8,11 @@ const DATA = [1, 2, 3, 4, 5, 6]
 const ROOT = 'b0f83986db9ecaa36bd08d732a99fc461f113b78e75612bade03892cd7bb8d25'
 
 describe('js-merkle-tree', function () {
+  it('should hash anything', function () {
+    const hash = MerkleTree.digestFn('sha256', DATA)
+    assert(hash.length, 64)
+  })
+
   it('should create a tree', function () {
     const tree = new MerkleTree('sha256', DATA)
     assert.equal(typeof tree.depth, 'number')
