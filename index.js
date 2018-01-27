@@ -26,7 +26,6 @@ class MerkleTree {
       this.digestFn = digestFn
     }
     const leaves = data.map(this.digestFn)
-    console.log(leaves)
     this._levels = [leaves].concat(this._derive(leaves))
   }
 
